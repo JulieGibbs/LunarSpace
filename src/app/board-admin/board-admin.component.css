@@ -1,0 +1,19 @@
+.list-content {
+    margin-top: 100px;
+    overflow-y: auto;
+    width: 100%;
+}
+
+.listitem {
+    margin-top: 20px;
+    list-style: none;
+}
+
+.item {
+    margin-left: 40px;
+    font-size: 20px;
+}
+
+.add-button {
+  margin-left: 40px;
+}

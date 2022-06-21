@@ -1,0 +1,13 @@
+<div class="container ">
+    <div class="list-content">
+        <ul *ngFor="let user of content; let i = index" class="listitem">
+        <li>
+            <span>{{i+1}}</span>
+            <span class="item">username: {{user.name}}</span>
+            <span class="item">email: {{user.email}}</span>
+            <button class="add-button" *ngIf="account !== user.address && !whiteLists[user.address]" (click)="addToWhiteLists(user)">Add to White Lists</button>
+            <button class="add-button" *ngIf="account !== user.address && whiteLists[user.address]" (click)="removeFromWhiteLists(user)">Remove from White Lists</button>
+        </li>
+    </ul>
+    </div>
+</div>

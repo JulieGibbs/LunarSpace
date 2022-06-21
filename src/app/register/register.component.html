@@ -1,0 +1,108 @@
+<div class="col-md-12">
+  <div class="card card-container">
+    <img
+      id="profile-img"
+      src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+      class="profile-img-card"
+    />
+    <form
+      *ngIf="!isSuccessful"
+      name="form"
+      (ngSubmit)="f.form.valid && onSubmit()"
+      #f="ngForm"
+      novalidate
+    >
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="firstName"
+          [(ngModel)]="form.firstName"
+          required
+          minlength="3"
+          maxlength="20"
+          #firstName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="firstName.errors && f.submitted">
+          <div *ngIf="firstName.errors['required']">FirstName is required</div>
+          <div *ngIf="firstName.errors['minlength']">
+            First must be at least 3 characters
+          </div>
+          <div *ngIf="firstName.errors['maxlength']">
+            First must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input
+          type="text"
+          class="form-control"
+          name="lastName"
+          [(ngModel)]="form.lastName"
+          required
+          minlength="3"
+          maxlength="20"
+          #lastName="ngModel"
+        />
+        <div class="alert-danger" *ngIf="lastName.errors && f.submitted">
+          <div *ngIf="lastName.errors['required']">LastName is required</div>
+          <div *ngIf="lastName.errors['minlength']">
+            LastName must be at least 3 characters
+          </div>
+          <div *ngIf="lastName.errors['maxlength']">
+            LastName must be at most 20 characters
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          name="email"
+          [(ngModel)]="form.email"
+          required
+          email
+          #email="ngModel"
+        />
+        <div class="alert-danger" *ngIf="email.errors && f.submitted">
+          <div *ngIf="email.errors['required']">Email is required</div>
+          <div *ngIf="email.errors['email']">
+            Email must be a valid email address
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="entityID">EntityID</label>
+        <input
+          type="text"
+          class="form-control"
+          name="entityID"
+          [(ngModel)]="form.entityID"
+          required
+          #entityID="ngModel"
+        />
+        <div class="alert-danger" *ngIf="entityID.errors && f.submitted">
+          <div *ngIf="entityID.errors['required']">EntityID is required</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">Sign Up</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+        Signup failed!<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="" *ngIf="isSuccessful">
+      <div class="form-group">
+        <button class="btn btn-primary btn-block">
+          Mint
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
